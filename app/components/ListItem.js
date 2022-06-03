@@ -2,14 +2,17 @@ import React from "react";
 import { View, StyleSheet, Pressable, Image, Text } from "react-native";
 
 import colorPalette from "../config/colorPalette";
+import Icon from "./Icon";
 
-function ListItem({ image, title }) {
+function ListItem({ image, title, name, name2 }) {
   return (
     <Pressable>
       <View style={styles.container}>
         {image && <Image style={styles.image} source={image} />}
         <View style={styles.detailsContainer}>
           <Text style={styles.title}> {title}</Text>
+          {Icon && <Icon name={name} />}
+          {Icon && <Icon name={name2} />}
         </View>
       </View>
     </Pressable>
@@ -18,18 +21,22 @@ function ListItem({ image, title }) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 15,
     backgroundColor: colorPalette.lavender,
     overflow: "hidden",
     marginBottom: 10,
+    borderRadius: 15,
+    margin: 5,
   },
   image: {
     width: "100%",
     height: 200,
   },
   detailsContainer: {
-    padding: 15,
-    justifyContent: "center",
+    flexDirection: "row",
+    margin: 10,
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "space-around",
   },
   title: {
     fontWeight: "900",

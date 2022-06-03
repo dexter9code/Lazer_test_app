@@ -25,7 +25,12 @@ function ListScreen(props) {
         data={data}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <ListItem title={item.title} image={item.image} />
+          <ListItem
+            title={item.title}
+            name="email"
+            name2="phone"
+            image={item.image}
+          />
         )}
       />
     </View>
