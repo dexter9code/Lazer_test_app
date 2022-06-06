@@ -10,23 +10,17 @@ import {
 
 import ListItem from "../components/ListItem";
 import listingApi from "../api/listings";
-const data = [
-  {
-    id: 54,
-    name: "Harry Potter",
-    image: require("../assets/images/harrypotter.jpg"),
-  },
-  {
-    id: 86,
-    name: "John Wick",
-    image: require("../assets/images/johnwick.jpg"),
-  },
-  { id: 23, name: "Duraken", image: require("../assets/images/duraken.jpg") },
-];
+import useApi from "../hooks/useApi";
 
 function ListScreen(props) {
-  const [listing, setListing] = useState([]);
+  const [listings, setListings] = useState([]);
   const [error, setError] = useState(false);
+
+  // const {
+  //   data: listing,
+  //   error,
+  //   request: loadlistings,
+  // } = useApi(listingApi.getListing);
 
   useEffect(() => {
     loadlistings();
@@ -36,8 +30,9 @@ function ListScreen(props) {
     const res = await listingApi.getListing();
     if (!res.ok) return setError(true);
     setError(false);
-    setListing(res.data);
+    setListings(res.data);
   };
+
   return (
     <View styles={styles.container}>
       <StatusBar styles="auto" />
@@ -48,7 +43,7 @@ function ListScreen(props) {
         </>
       )}
       <FlatList
-        data={listing}
+        data={listings}
         keyExtractor={(item) => item._id}
         renderItem={({ item }) => (
           <ListItem
