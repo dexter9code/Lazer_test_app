@@ -4,13 +4,14 @@ import { View, StyleSheet, Pressable, Image, Text } from "react-native";
 import colorPalette from "../config/colorPalette";
 import Icon from "./Icon";
 
-function ListItem({ image, title, name, name2 }) {
+function ListItem({ image, title, subTitle, name, name2 }) {
   return (
     <Pressable>
       <View style={styles.container}>
-        {image && <Image style={styles.image} source={image} />}
+        {image && <Image style={styles.image} source={{ uri: image }} />}
         <View style={styles.detailsContainer}>
           <Text style={styles.title}> {title}</Text>
+          <Text style={styles.subTitle}> {subTitle}</Text>
           {Icon && <Icon name={name} />}
           {Icon && <Icon name={name2} />}
         </View>
@@ -40,6 +41,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "900",
+    color: colorPalette.blushRed,
+  },
+  subTitle: {
+    fontWeight: "400",
     color: colorPalette.blushRed,
   },
 });
