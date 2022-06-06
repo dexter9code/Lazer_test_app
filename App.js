@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AccountScreen from "./app/screen/AccountScreen";
+import LoginScreen from "./app/screen/LoginScreen";
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
@@ -33,8 +34,9 @@ const TabNavigator = () => (
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <TabNavigator />
-    </NavigationContainer>
+    // <NavigationContainer>
+    //   <TabNavigator />
+    // </NavigationContainer>
+    <LoginScreen />
   );
 }
